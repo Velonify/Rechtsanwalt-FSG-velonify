@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fischer Seifert Gaiser</title>
+<meta name="description" content="Anwaltskanzlei Fischer Seifert Gaiser in Stuttgart-Vaihingen: Familienrecht, Erbrecht, Mietrecht, Arbeitsrecht und mehr. Seit über 20 Jahren. Termin online buchen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#102A43; --navy-2:#1A3A5A; --navy-tief:#0A1D30;
+  --gold:#D52100; --gold-hell:#F08A74; --gold-btn:#D52100; --gold-btn-hover:#B01B00;
+  --text:#15171C; --text-2:#4F5866; --text-3:#646E7A;
+  --linie:#E4E1D8; --linie-2:#CFCBC0;
+  --grund:#FFFFFF; --grund-2:#F7F5EF; --grund-3:#EEF1F5;
+  --ok:#1F7A4D; --fehler:#B3261E;
+  --radius:5px;
+  --schatten:0 1px 2px rgba(16,42,67,.05),0 10px 30px -14px rgba(16,42,67,.22);
+  --schatten-2:0 2px 4px rgba(16,42,67,.06),0 28px 56px -24px rgba(16,42,67,.42);
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --rand:clamp(16px,4vw,48px);
+  --max:1180px;
+  --aus:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --grund:#0F1822; --grund-2:#142130; --grund-3:#1B2A3B; --text:#E8ECF0; --text-2:#AAB4BF; --text-3:#8893A0; --linie:#24364A; --linie-2:#2E445C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --grund:#0F1822; --grund-2:#142130; --grund-3:#1B2A3B; --text:#E8ECF0; --text-2:#AAB4BF; --text-3:#8893A0; --linie:#24364A; --linie-2:#2E445C;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--grund);color:var(--text);font-family:var(--font);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"cv11","ss01"}
+::selection{background:var(--navy);color:#fff}
+input,textarea,select{caret-color:var(--gold)}
+html{scrollbar-color:var(--linie-2) var(--grund-2)}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:2px}
+.dunkel :focus-visible{outline-color:var(--gold-hell)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ico{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--rand)}
+h1,h2,h3{font-weight:400;letter-spacing:-.022em;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,3.8vw,3.25rem)}
+h2 em,h1 em{font-style:normal;color:var(--navy-2)}
+.dunkel h2 em,.dunkel h1 em{color:var(--gold-hell)}
+.label{display:inline-flex;align-items:center;gap:12px;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin:0 0 20px}
+.label::before{content:"";width:26px;height:1px;background:var(--gold)}
+.dunkel .label{color:var(--gold-hell)}
+.zentriert{text-align:center}
+.zentriert .label::after{content:"";width:26px;height:1px;background:var(--gold)}
+.zentriert .einleitung{margin-left:auto;margin-right:auto}
+.einleitung{color:var(--text-2);font-size:1.125rem;max-width:58ch;margin:18px 0 0}
+.kopfbereich{display:flex;justify-content:space-between;align-items:end;gap:24px 48px;flex-wrap:wrap;margin-bottom:clamp(36px,4.5vw,60px)}
+.kopfbereich.zentriert{justify-content:center}
+.trenner{width:64px;height:2px;background:var(--gold);margin:0 auto;border:0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:600;font-size:.98rem;line-height:1;text-decoration:none;padding:15px 22px;border-radius:var(--radius);border:1.5px solid transparent;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .12s}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold-btn);color:#fff}
+.btn-gold:hover{background:var(--gold-btn-hover)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-rand{border-color:var(--linie-2);color:var(--text);background:var(--grund)}
+.btn-rand:hover{border-color:var(--navy)}
+.btn-hell{border-color:rgba(255,255,255,.35);color:#fff;background:transparent}
+.btn-hell:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+[hidden]{display:none!important}
+.btn .ico{transition:transform .2s var(--aus)}
+.btn:hover .pf{transform:translateX(3px)}
+.link-pfeil{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--navy);text-decoration:none}
+.link-pfeil:hover{text-decoration:underline}
+
+/* Topbar + Navigation */
+.topbar{background:var(--navy-tief);color:#BFC9D4;font-size:.84rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:40px;flex-wrap:wrap}
+.topbar span,.topbar a{display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+.topbar a:hover{color:#fff}
+.topbar .links{display:flex;gap:22px}
+.punkt{width:7px;height:7px;border-radius:50%;background:#6FCF97}
+.punkt.zu{background:#E8A39C}
+.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--linie)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px}
+.logo{display:flex;flex-direction:column;text-decoration:none;color:var(--navy);line-height:1.1}
+.logo b{font-weight:600;font-size:1.12rem;letter-spacing:-.01em}
+.logo small{font-size:.7rem;color:var(--gold-btn);letter-spacing:.22em;text-transform:uppercase;margin-top:5px;font-weight:600}
+.menue{display:flex;align-items:center;gap:32px;list-style:none;margin:0;padding:0}
+.menue a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--text-2);padding:6px 0;border-bottom:1.5px solid transparent;transition:color .15s,border-color .15s}
+.menue a:hover{color:var(--navy);border-color:var(--gold)}
+.nav-rechts{display:flex;align-items:center;gap:20px}
+.nav-rechts .tel{font-weight:600;font-size:.95rem;text-decoration:none;color:var(--navy)}
+.nav .btn{padding:12px 18px}
+.burger{display:none;background:none;border:1.5px solid var(--linie-2);border-radius:var(--radius);padding:9px;cursor:pointer;color:var(--text)}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0) 55%,rgba(255,255,255,.035) 55%,rgba(255,255,255,.035) 75%,rgba(255,255,255,0) 75%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,80px);align-items:center;padding-top:clamp(64px,8.5vw,112px);padding-bottom:clamp(64px,8.5vw,112px);position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,5.2vw,4.25rem);font-weight:300;line-height:1.04;letter-spacing:-.03em;margin-bottom:24px}
+.hero h1 em{font-weight:400}
+.hero .lead{font-size:clamp(1.05rem,1.35vw,1.2rem);color:#C9D3DE;max-width:50ch;margin:0 0 36px;font-weight:300}
+.hero-aktion{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+.fakten{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 48px;border-top:1px solid rgba(255,255,255,.14);padding-top:28px}
+.fakten div{display:flex;flex-direction:column}
+.fakten b{font-weight:300;font-size:2.1rem;line-height:1.1;color:#fff;letter-spacing:-.02em}
+.fakten span{font-size:.86rem;color:#A9B6C4;margin-top:2px}
+
+.schnell{background:var(--grund);color:var(--text);border-radius:6px;box-shadow:var(--schatten-2);padding:clamp(24px,3vw,36px)}
+.schnell h2{font-size:1.5rem;font-weight:500;letter-spacing:-.015em;margin-bottom:8px}
+.schnell > p{color:var(--text-2);margin:0 0 22px;font-size:.96rem}
+.feld{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.feld label{font-size:.84rem;font-weight:600;color:var(--text)}
+.feld input,.feld select,.feld textarea{font:inherit;font-size:1rem;color:var(--text);background:var(--grund);border:1px solid var(--linie-2);border-radius:var(--radius);padding:12px 14px;transition:border-color .15s,box-shadow .15s;width:100%}
+.feld select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%234F5866' stroke-width='1.6'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+.feld input:focus,.feld select:focus,.feld textarea:focus{outline:0;border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.feld textarea{min-height:100px;resize:vertical}
+.feld input::placeholder,.feld textarea::placeholder{color:var(--text-3)}
+.feld .fehler{color:var(--fehler);font-size:.84rem;display:none}
+.feld.falsch input{border-color:var(--fehler)}
+.feld.falsch .fehler{display:block}
+.schnell .btn{width:100%}
+.schnell .klein{font-size:.86rem;color:var(--text-3);margin:16px 0 0;text-align:center}
+.schnell .klein a{color:var(--text-2);font-weight:600}
+
+/* Werte-Leiste */
+.werte{background:var(--grund);border-bottom:1px solid var(--linie)}
+.werte .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.wert{padding:30px 26px 30px 0;display:flex;gap:14px;align-items:flex-start}
+.wert + .wert{padding-left:26px;border-left:1px solid var(--linie)}
+.wert .ico{color:var(--gold);width:24px;height:24px;margin-top:2px}
+.wert b{display:block;font-weight:600;font-size:.98rem;margin-bottom:2px}
+.wert span{color:var(--text-2);font-size:.9rem;line-height:1.45;display:block}
+
+section{padding:clamp(80px,10vw,128px) 0}
+.warm{background:var(--grund-2)}
+
+/* Anwälte */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,30px)}
+.person{background:var(--grund);border:1px solid var(--linie);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s var(--aus),transform .3s var(--aus)}
+.person:hover{box-shadow:var(--schatten-2);transform:translateY(-3px)}
+.portrait{aspect-ratio:4/4.3;overflow:hidden;background:#2B2F33}
+.portrait img{width:100%;height:100%;object-fit:cover;transform:scale(1.62);transform-origin:50% 28%;filter:saturate(.9)}
+.person-text{padding:26px 28px 28px;display:flex;flex-direction:column;flex:1}
+.person h3{font-size:1.5rem;font-weight:500;letter-spacing:-.02em;margin-bottom:6px}
+.rolle{color:var(--gold-btn);font-size:.86rem;font-weight:600;letter-spacing:.04em;margin:0 0 18px;min-height:2.8em}
+.person ul.punkte{margin:0 0 22px;padding-left:18px;color:var(--text-2);font-size:.95rem;display:grid;gap:5px}
+.person ul.punkte li::marker{color:var(--gold)}
+.person-fuss{margin-top:auto;display:flex;gap:10px;padding-top:20px;border-top:1px solid var(--linie)}
+.person-fuss .btn{padding:11px 16px;font-size:.9rem}
+.person-fuss .btn-navy{flex:1}
+
+/* Leistungen */
+.leistungen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
+.leistung{background:var(--grund);border:1px solid var(--linie);border-radius:6px;padding:clamp(26px,2.8vw,34px);display:flex;flex-direction:column;transition:border-color .2s,box-shadow .3s var(--aus)}
+.leistung:hover{border-color:var(--linie-2);box-shadow:var(--schatten)}
+.leistung .ico-box{width:46px;height:46px;border-radius:50%;background:var(--grund-3);display:grid;place-items:center;color:var(--navy);margin-bottom:22px}
+.leistung .ico-box .ico{width:22px;height:22px}
+.leistung h3{font-size:1.4rem;font-weight:500;letter-spacing:-.02em;margin-bottom:10px}
+.leistung p{color:var(--text-2);margin:0 0 18px;font-size:.98rem}
+.leistung .typisch{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);border-top:1px solid var(--linie);padding-top:16px;margin:0 0 10px}
+.leistung ul{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px}
+.leistung li{font-size:.92rem;display:flex;gap:8px;align-items:center}
+.leistung li::before{content:"";width:4px;height:4px;background:var(--navy);border-radius:50%;flex:none}
+.leistung .wer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.88rem;color:var(--text-3)}
+.leistung .wer b{color:var(--text);font-weight:600}
+.leistung .wer a{font-weight:600;color:var(--navy);text-decoration:none;white-space:nowrap}
+.leistung .wer a:hover{text-decoration:underline}
+.weitere{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;color:var(--text-2);font-size:.92rem}
+.weitere span{border:1px solid var(--linie-2);border-radius:999px;padding:6px 14px;background:var(--grund)}
+
+/* CTA-Band */
+.band{background:var(--navy);color:#fff;padding:clamp(64px,8vw,96px) 0}
+.band h2{font-weight:300;letter-spacing:-.025em}
+.band p{color:#C9D3DE;max-width:56ch;margin:18px auto 32px;font-weight:300;font-size:1.1rem}
+.band .aktionen{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* Kanzlei */
+.vorteile{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(32px,6vw,96px);align-items:start}
+.zitat{margin:30px 0 0;padding:4px 0 4px 22px;border-left:2px solid var(--gold);font-style:italic;font-size:1.12rem;color:var(--text);max-width:46ch}
+.zitat cite{display:block;font-style:normal;font-size:.86rem;color:var(--text-3);margin-top:8px}
+.vorteile-liste{display:grid;gap:12px}
+.vorteil{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--linie);border-radius:6px;padding:18px 20px;background:var(--grund)}
+.vorteil .ico-rund{width:40px;height:40px;border-radius:50%;background:var(--grund-3);display:grid;place-items:center;color:var(--navy);flex:none}
+.vorteil .ico{width:19px;height:19px}
+.vorteil h3{font-size:1rem;font-weight:600;letter-spacing:-.005em;margin:0 0 3px}
+.vorteil p{margin:0;color:var(--text-2);font-size:.93rem;line-height:1.5}
+.notfall-box{margin-top:30px;padding:22px 24px;border-radius:6px;background:var(--grund-2);border:1px solid var(--linie);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.notfall-box p{margin:0;color:var(--text-2);font-size:.93rem}
+.notfall-box b{display:block;color:var(--text);font-size:1rem;margin-bottom:2px}
+.notfall-box a{font-size:1.35rem;font-weight:500;color:var(--navy);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
+.notfall-box a:hover{text-decoration:underline}
+
+/* Bewertungen */
+.bewertungen{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:clamp(16px,2vw,24px)}
+.bewertung{background:var(--grund);border:1px solid var(--linie);border-radius:6px;padding:clamp(26px,3vw,36px);margin:0;display:flex;flex-direction:column}
+.sterne{display:flex;gap:3px;color:var(--gold);margin-bottom:18px}
+.sterne svg{width:16px;height:16px;fill:currentColor}
+.bewertung blockquote{margin:0 0 26px;font-size:1.08rem;line-height:1.55;color:var(--text)}
+.bewertung.gross{background:var(--navy);border-color:var(--navy);color:#fff}
+.bewertung.gross blockquote{color:#fff;font-size:1.2rem;font-weight:300}
+.bewertung.gross ul{list-style:none;padding:0;margin:0 0 26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:.9rem;color:#A9B6C4;border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
+.bewertung.gross ul b{display:block;color:#fff;font-weight:500;font-size:.95rem}
+.bewertung figcaption{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.88rem;color:var(--text-3)}
+.bewertung figcaption b{display:block;color:var(--text);font-weight:600;font-size:.96rem}
+.bewertung.gross figcaption{color:#A9B6C4}
+.bewertung.gross figcaption b{color:#fff}
+.quelle{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:600;border:1px solid var(--linie);border-radius:999px;padding:5px 11px;color:var(--text-2);background:var(--grund)}
+.bewertung.gross .quelle{background:transparent;border-color:rgba(255,255,255,.2);color:#C9D3DE}
+.g-logo{width:13px;height:13px}
+.bew-fuss{display:flex;justify-content:center;margin-top:32px}
+
+/* Termin buchen */
+.buchung{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(28px,5vw,72px);align-items:start}
+.schritte{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:0}
+.schritte li{display:flex;align-items:center;gap:14px;padding:14px 0;color:var(--text-3);font-weight:500;border-bottom:1px solid var(--linie);font-size:.98rem}
+.schritte li span{width:32px;height:32px;border:1px solid var(--linie-2);border-radius:var(--radius);display:grid;place-items:center;font-size:.85rem;font-weight:600;flex:none;color:var(--text-3)}
+.schritte li.aktiv{color:var(--text)}
+.schritte li.aktiv span{border-color:var(--gold);color:var(--gold-btn)}
+.schritte li.fertig span{border-color:var(--ok);background:var(--ok);color:#fff}
+.lieber{margin-top:28px;font-size:.96rem;color:var(--text-2)}
+.lieber a{font-weight:600;color:var(--text)}
+.kalender{background:var(--grund);border:1px solid var(--linie);border-radius:8px;box-shadow:var(--schatten-2);overflow:hidden}
+.kal-kopf{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid var(--linie);background:var(--grund-2);font-size:.9rem;color:var(--text-2)}
+.kal-kopf b{color:var(--text);font-size:.98rem}
+.schritt{padding:clamp(22px,3vw,32px) clamp(20px,3vw,32px)}
+.schritt[hidden]{display:none}
+.schritt.rein{animation:rein .4s var(--aus) both}
+@keyframes rein{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.schritt h3{font-size:1.05rem;font-weight:600;letter-spacing:-.005em;margin-bottom:16px}
+.wahl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0;padding:0;border:0}
+.wahl label{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:1px solid var(--linie-2);border-radius:var(--radius);cursor:pointer;transition:border-color .15s,background .15s}
+.wahl label:hover{border-color:var(--navy)}
+.wahl input{position:absolute;opacity:0;pointer-events:none}
+.wahl label:has(input:checked){border-color:var(--navy);background:#F3F6F9;box-shadow:inset 0 0 0 1px var(--navy)}
+.wahl label:has(input:focus-visible){outline:2px solid var(--navy);outline-offset:2px}
+.wahl b{font-weight:600;font-size:.95rem}
+.wahl small{color:var(--text-3);font-size:.82rem}
+.anwalt-wahl{grid-template-columns:repeat(3,minmax(0,1fr))}
+.anwalt-wahl label{flex-direction:row;align-items:center;gap:12px}
+.mini{width:42px;height:42px;border-radius:50%;overflow:hidden;flex:none;background:#2B2F33}
+.mini img{width:100%;height:100%;object-fit:cover;transform:scale(1.7);transform-origin:50% 28%}
+.empf{font-size:.7rem;font-weight:700;color:var(--ok);text-transform:uppercase;letter-spacing:.08em}
+.art{margin-top:22px}
+.tage{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:22px}
+.tag{font:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:1px solid var(--linie-2);border-radius:var(--radius);background:var(--grund);cursor:pointer;color:var(--text)}
+.tag small{font-size:.72rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em}
+.tag b{font-size:1.08rem;font-weight:600}
+.tag:hover{border-color:var(--navy)}
+.tag[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.tag[aria-pressed="true"] small{color:#BFC9D4}
+.zeiten-raster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.zeit{font:inherit;font-weight:600;font-size:.95rem;padding:11px 6px;border:1px solid var(--linie-2);border-radius:var(--radius);background:var(--grund);cursor:pointer;color:var(--text)}
+.zeit:hover:not([disabled]){border-color:var(--navy)}
+.zeit[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.zeit[disabled]{color:var(--text-3);text-decoration:line-through;background:var(--grund-2);border-color:var(--linie);cursor:not-allowed}
+.zeiten-leer{color:var(--text-3);font-style:italic;margin:0;grid-column:1/-1}
+.reihe{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.zusammen{background:var(--grund-2);border:1px solid var(--linie);border-radius:var(--radius);padding:14px 16px;margin-bottom:18px;font-size:.93rem;display:grid;gap:4px}
+.zusammen b{font-weight:600}
+.check{display:flex;gap:11px;align-items:flex-start;font-size:.88rem;color:var(--text-2);margin:4px 0;line-height:1.45}
+.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--navy);flex:none}
+.check.falsch{color:var(--fehler)}
+.kal-fuss{display:flex;justify-content:space-between;gap:12px;padding:18px clamp(20px,3vw,32px);border-top:1px solid var(--linie)}
+.kal-fuss[hidden]{display:none}
+.bestaetigt{padding:clamp(36px,5vw,56px) clamp(22px,4vw,48px);text-align:center}
+.bestaetigt .haken{width:64px;height:64px;border-radius:50%;background:#E6F3EC;color:var(--ok);display:grid;place-items:center;margin:0 auto 20px}
+.bestaetigt .haken .ico{width:30px;height:30px;stroke-width:2.2}
+.bestaetigt h3{font-size:1.75rem;font-weight:400;margin-bottom:10px}
+.bestaetigt p{color:var(--text-2);margin:0 auto 22px;max-width:44ch}
+.bestaetigt .zusammen{text-align:left;max-width:420px;margin:0 auto 24px}
+
+/* Kontakt */
+.kontakt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+.kontakt h3{font-size:.74rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--text-3);margin-bottom:16px}
+.kontakt address{font-style:normal;font-size:1.05rem;line-height:1.7}
+.kontakt .zeilen{display:grid;gap:11px}
+.kontakt .zeilen a,.kontakt .zeilen span{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:500}
+.kontakt .zeilen a:hover{text-decoration:underline}
+.oz{width:100%;border-collapse:collapse;font-size:.95rem}
+.oz th{text-align:left;font-weight:500;color:var(--text-2);padding:7px 0;border-bottom:1px solid var(--linie)}
+.oz td{text-align:right;padding:7px 0;border-bottom:1px solid var(--linie)}
+.oz tr.heute th,.oz tr.heute td{color:var(--navy);font-weight:700}
+.karte{margin-top:clamp(36px,4vw,52px);border-radius:6px;overflow:hidden;border:1px solid var(--linie);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;background:var(--grund)}
+.karte-bild{height:230px;background:
+  linear-gradient(90deg,transparent 49.6%,var(--linie-2) 49.6%,var(--linie-2) 50.4%,transparent 50.4%) 0 0/120px 100%,
+  linear-gradient(0deg,transparent 48%,#fff 48%,#fff 52%,transparent 52%) 0 0/100% 90px,
+  linear-gradient(90deg,transparent 47%,#fff 47%,#fff 53%,transparent 53%) 0 0/180px 100%,
+  #E9ECEF;position:relative}
+.karte-bild::after{content:"";position:absolute;left:50%;top:50%;width:22px;height:22px;background:var(--navy);border:3px solid #fff;border-radius:50% 50% 50% 0;transform:translate(-50%,-80%) rotate(-45deg);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.karte-text{padding:26px 34px}
+.karte-text p{margin:0 0 14px;color:var(--text-2);font-size:.95rem}
+
+/* Footer */
+footer{background:var(--navy-tief);color:#A9B6C4;font-size:.9rem;padding:56px 0 44px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;align-items:flex-start}
+footer .logo{color:#fff}
+footer .logo small{color:var(--gold-hell)}
+footer .logo + p{margin:12px 0 0;max-width:40ch;font-size:.88rem}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.entwurf{position:fixed;right:14px;bottom:14px;z-index:50;font-size:.75rem;font-weight:600;background:#fff;color:var(--navy);border:1px solid var(--linie-2);padding:7px 12px;border-radius:999px;box-shadow:var(--schatten)}
+.mobil-leiste{display:none}
+
+/* Responsiv */
+@media (max-width:1100px){
+  .nav-rechts .tel{display:none}
+}
+@media (max-width:960px){
+  .hero .wrap,.buchung,.vorteile{grid-template-columns:minmax(0,1fr)}
+  .team,.leistungen{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bewertungen{grid-template-columns:1fr 1fr}
+  .bewertung.gross{grid-column:1/-1}
+  .werte .wrap{grid-template-columns:1fr 1fr}
+  .wert:nth-child(3){padding-left:0;border-left:0}
+  .wert:nth-child(n+3){border-top:1px solid var(--linie)}
+  .kontakt{grid-template-columns:1fr 1fr}
+  .menue,.nav-rechts .btn{display:none}
+  .burger{display:inline-flex}
+  .nav.offen .menue{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--grund);border-bottom:1px solid var(--linie);padding:8px var(--rand) 16px;box-shadow:var(--schatten)}
+  .nav.offen .menue a{display:block;padding:14px 0;border-bottom:1px solid var(--linie)}
+}
+@media (max-width:640px){
+  .topbar .adr{display:none}
+  .team,.leistungen,.bewertungen,.kontakt{grid-template-columns:minmax(0,1fr)}
+  .werte .wrap{grid-template-columns:minmax(0,1fr)}
+  .wert,.wert + .wert{padding:18px 0;border-left:0}
+  .wert + .wert{border-top:1px solid var(--linie)}
+  .fakten{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px}
+  .fakten b{font-size:1.6rem}
+  .wahl,.anwalt-wahl,.reihe{grid-template-columns:minmax(0,1fr)}
+  .tage{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .zeiten-raster{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .karte{grid-template-columns:1fr}
+  .mobil-leiste{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--grund);border-top:1px solid var(--linie);box-shadow:0 -6px 20px rgba(16,42,67,.08)}
+  .mobil-leiste .btn{flex:1;padding:14px 10px}
+  .entwurf{display:none}
+  .topbar .links a{display:none}
+  .topbar .wrap{justify-content:center}
+  footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 0 0 6.1 6.1l1.4-2.3L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-pfeil" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-zurueck" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-ort" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-kal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-siegel" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/></symbol>
+  <symbol id="i-waage" viewBox="0 0 24 24"><path d="M12 4v16M8 20h8M5 7h14M5 7l-2.5 6a3 3 0 0 0 5 0L5 7zM19 7l-2.5 6a3 3 0 0 0 5 0L19 7z"/></symbol>
+  <symbol id="i-familie" viewBox="0 0 24 24"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3.5 19v-3.5A3.5 3.5 0 0 1 7 12h2a3.5 3.5 0 0 1 3 1.7A3.5 3.5 0 0 1 15 12h2a3.5 3.5 0 0 1 3.5 3.5V19"/></symbol>
+  <symbol id="i-dok" viewBox="0 0 24 24"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h5"/></symbol>
+  <symbol id="i-haus" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M10 20v-5.5h4V20"/></symbol>
+  <symbol id="i-koffer" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="1.5"/><path d="M9 7.5V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5v2M3.5 12.5h17"/></symbol>
+  <symbol id="i-vertrag" viewBox="0 0 24 24"><path d="M6 3.5h9l3 3V20.5H6z"/><path d="M9 9h6M9 12.5h6M9 17c1-1.5 2-1.5 2.5 0s1.5 1.5 3.5-.5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.5A7 7 0 1 0 17.5 17.5M4 10h9M4 14h9"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  <symbol id="i-kind" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="2.5"/><path d="M12 9.5v6M8 12l4-1.5 4 1.5M9.5 20.5l2.5-5 2.5 5"/></symbol>
+  <symbol id="i-blitz" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+  <symbol id="i-auto" viewBox="0 0 24 24"><path d="M4 16.5V12l2-5h12l2 5v4.5M4 16.5h16M4 16.5V19h3v-2.5M17 16.5V19h3v-2.5M4 12h16"/></symbol>
+  <symbol id="i-menue" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-stern" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="adr"><svg class="ico"><use href="#i-ort"/></svg>Hauptstraße 78 B · 70563 Stuttgart-Vaihingen</span>
+    <div class="links">
+      <span id="status-top"><i class="punkt"></i><span>Mo–Do 8:30–17:00 · Fr 8:30–12:00</span></span>
+      <a href="mailto:info@stuttgart-anwaltskanzlei.com"><svg class="ico"><use href="#i-mail"/></svg>info@stuttgart-anwaltskanzlei.com</a>
+    </div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#"><b>Fischer Seifert Gaiser</b><small>Rechtsanwälte</small></a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="menue" id="menue">
+        <li><a href="#leistungen">Rechtsgebiete</a></li>
+        <li><a href="#anwaelte">Anwälte</a></li>
+        <li><a href="#kanzlei">Kanzlei</a></li>
+        <li><a href="#bewertungen">Bewertungen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="nav-rechts">
+      <a class="tel num" href="tel:+4971178241814">0711 78241814</a>
+      <a class="btn btn-gold" href="#termin">Termin buchen <svg class="ico pf"><use href="#i-pfeil"/></svg></a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="menue"><svg class="ico"><use href="#i-menue"/></svg><span class="sr">Menü</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- Hero -->
+<div class="hero dunkel">
+  <div class="wrap">
+    <div>
+      <p class="label">Rechtsanwälte · Stuttgart-Vaihingen</p>
+      <h1>Ihr Recht in <em>erfahrenen Händen.</em></h1>
+      <p class="lead">Seit über 20 Jahren beraten, vertreten und verteidigen wir Privatpersonen und Unternehmen: persönlich, zügig und kostentransparent. Außergerichtlich und vor Gericht, bundesweit.</p>
+      <div class="hero-aktion">
+        <a class="btn btn-gold" href="#termin"><svg class="ico"><use href="#i-kal"/></svg>Termin online buchen</a>
+        <a class="btn btn-hell num" href="tel:+4971178241814"><svg class="ico"><use href="#i-tel"/></svg>0711 78241814</a>
+      </div>
+      <div class="fakten">
+        <div><b class="num">20+</b><span>Jahre Erfahrung</span></div>
+        <div><b class="num">2</b><span>Fachanwälte</span></div>
+        <div><b class="num">30+</b><span>Rechtsgebiete</span></div>
+      </div>
+    </div>
+
+    <form class="schnell" id="schnell" aria-labelledby="schnell-titel">
+      <h2 id="schnell-titel">Worum geht es bei Ihnen?</h2>
+      <p>Wählen Sie Ihr Anliegen. Wir zeigen Ihnen den zuständigen Anwalt und freie Termine.</p>
+      <div class="feld">
+        <label for="schnell-anliegen">Rechtsgebiet</label>
+        <select id="schnell-anliegen"></select>
+      </div>
+      <button class="btn btn-navy" type="submit">Freie Termine anzeigen <svg class="ico pf"><use href="#i-pfeil"/></svg></button>
+      <p class="klein">Lieber telefonisch? <a class="num" href="tel:+4971178241814">0711 78241814</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="werte">
+  <div class="wrap">
+    <div class="wert"><svg class="ico"><use href="#i-siegel"/></svg><div><b>Fachanwälte</b><span>Familienrecht sowie Miet- und WEG-Recht</span></div></div>
+    <div class="wert"><svg class="ico"><use href="#i-person"/></svg><div><b>Persönlich</b><span>Ein fester Ansprechpartner für Ihren Fall</span></div></div>
+    <div class="wert"><svg class="ico"><use href="#i-blitz"/></svg><div><b>Erreichbar</b><span>Kurzfristige Termine, Notfallnummer</span></div></div>
+    <div class="wert"><svg class="ico"><use href="#i-waage"/></svg><div><b>Bundesweit</b><span>Außergerichtlich und vor Gericht</span></div></div>
+  </div>
+</div>
+
+<!-- Leistungen -->
+<section id="leistungen" class="warm" aria-labelledby="leistungen-titel">
+  <div class="wrap">
+    <div class="kopfbereich zentriert">
+      <div>
+        <p class="label">Rechtsgebiete</p>
+        <h2 id="leistungen-titel">Wobei dürfen wir Sie <em>unterstützen</em>?</h2>
+        <p class="einleitung">Von der Scheidung über das Testament bis zum Mietstreit: Wir beraten Sie in Fragen des täglichen Lebens und des Geschäftslebens.</p>
+      </div>
+    </div>
+    <div class="leistungen">
+      <article class="leistung">
+        <div class="ico-box"><svg class="ico"><use href="#i-familie"/></svg></div>
+        <h3>Familienrecht</h3>
+        <p>Trennung, Scheidung und alles, was danach geregelt werden muss.</p>
+        <p class="typisch">Typische Anliegen</p>
+        <ul><li>Scheidung</li><li>Unterhalt</li><li>Sorgerecht</li><li>Umgangsrecht</li><li>Ehevertrag</li><li>Zugewinn</li></ul>
+        <div class="wer"><span><b>Christina Seifert</b></span><a href="#termin" data-anliegen="Scheidung & Trennung">Termin →</a></div>
+      </article>
+      <article class="leistung">
+        <div class="ico-box"><svg class="ico"><use href="#i-dok"/></svg></div>
+        <h3>Erbrecht</h3>
+        <p>Den Nachlass vorausschauend regeln oder Ihr Erbe sichern.</p>
+        <p class="typisch">Typische Anliegen</p>
+        <ul><li>Testament</li><li>Nachlassregelung</li><li>Pflichtteil</li><li>Testamentsvollstreckung</li></ul>
+        <div class="wer"><span><b>Alexander Fischer</b></span><a href="#termin" data-anliegen="Erbrecht & Testament">Termin →</a></div>
+      </article>
+      <article class="leistung">
+        <div class="ico-box"><svg class="ico"><use href="#i-haus"/></svg></div>
+        <h3>Miet- und Immobilienrecht</h3>
+        <p>Für Mieter, Vermieter und Eigentümergemeinschaften.</p>
+        <p class="typisch">Typische Anliegen</p>
+        <ul><li>Mietrecht</li><li>Kündigung Mietvertrag</li><li>WEG-Recht</li><li>Immobilien</li><li>Maklerrecht</li></ul>
+        <div class="wer"><span><b>Tobias Gaiser</b></span><a href="#termin" data-anliegen="Mietrecht">Termin →</a></div>
+      </article>
+      <article class="leistung">
+        <div class="ico-box"><svg class="ico"><use href="#i-koffer"/></svg></div>
+        <h3>Arbeitsrecht</h3>
+        <p>Für Arbeitnehmer und Arbeitgeber, vom Vertrag bis zur Kündigung.</p>
+        <p class="typisch">Typische Anliegen</p>
+        <ul><li>Kündigung</li><li>Arbeitsvertrag</li><li>Zeugnisüberprüfung</li></ul>
+        <div class="wer"><span><b>A. Fischer · T. Gaiser</b></span><a href="#termin" data-anliegen="Arbeitsrecht & Kündigung">Termin →</a></div>
+      </article>
+      <article class="leistung">
+        <div class="ico-box"><svg class="ico"><use href="#i-vertrag"/></svg></div>
+        <h3>Vertrags- und Gesellschaftsrecht</h3>
+        <p>Rechtssicherheit für Unternehmen, Selbstständige und Vereine.</p>
+        <p class="typisch">Typische Anliegen</p>
+        <ul><li>Vertragsprüfung</li><li>Gesellschaftsrecht</li><li>Markenrecht</li><li>Vereinsrecht</li></ul>
+        <div class="wer"><span><b>Alexander Fischer</b></span><a href="#termin" data-anliegen="Vertragsprüfung">Termin →</a></div>
+      </article>
+      <article class="leistung">
+        <div class="ico-box"><svg class="ico"><use href="#i-euro"/></svg></div>
+        <h3>Inkasso und Mahnverfahren</h3>
+        <p>Offene Forderungen konsequent durchsetzen. Wir übernehmen das für Sie.</p>
+        <p class="typisch">Typische Anliegen</p>
+        <ul><li>Inkasso</li><li>Mahnverfahren</li><li>Offene Rechnungen</li></ul>
+        <div class="wer"><span><b>Kanzlei</b></span><a href="#termin" data-anliegen="Inkasso & Mahnverfahren">Termin →</a></div>
+      </article>
+    </div>
+    <div class="weitere"><b>Außerdem:</b><span>Verkehrsunfallrecht</span><span>Urheberrecht</span><span>Musikrecht &amp; GEMA</span><span>Eventrecht</span><span>Untervollmacht</span></div>
+  </div>
+</section>
+
+<!-- CTA-Band -->
+<div class="band dunkel zentriert">
+  <div class="wrap">
+    <p class="label">Weitere Rechtsfragen</p>
+    <h2>Ihr Anliegen ist nicht dabei?</h2>
+    <p>Schildern Sie uns kurz Ihre Situation. Wir sagen Ihnen, ob und wie wir helfen können, und wer bei uns der richtige Ansprechpartner ist.</p>
+    <div class="aktionen">
+      <a class="btn btn-gold" href="#termin">Erstberatung buchen <svg class="ico pf"><use href="#i-pfeil"/></svg></a>
+      <a class="btn btn-hell num" href="tel:+4971178241814"><svg class="ico"><use href="#i-tel"/></svg>0711 78241814</a>
+    </div>
+  </div>
+</div>
+
+<!-- Anwälte -->
+<section id="anwaelte" aria-labelledby="anwaelte-titel">
+  <div class="wrap">
+    <div class="kopfbereich zentriert">
+      <div>
+        <p class="label">Unsere Anwälte</p>
+        <h2 id="anwaelte-titel">Drei Anwälte. <em>Ein fester Ansprechpartner</em> für Sie.</h2>
+      </div>
+    </div>
+    <div class="team">
+      <article class="person">
+        <div class="portrait"><img src="img/fischer.jpg" alt="Rechtsanwalt Alexander Fischer" width="613" height="743" loading="lazy"></div>
+        <div class="person-text">
+          <h3>Alexander Fischer</h3>
+          <p class="rolle">Rechtsanwalt · Testamentsvollstrecker</p>
+          <ul class="punkte"><li>Als Rechtsanwalt tätig seit 1999</li><li>Aufsichtsrat mehrerer Gesellschaften</li><li>Mitglied im European Lawyers Network Carpe Jus</li><li>Erbrecht, Gesellschafts-, Vertrags-, Marken-, Arbeits- und Vereinsrecht</li></ul>
+          <div class="person-fuss">
+            <a class="btn btn-navy" href="#termin" data-anwalt="F">Termin buchen</a>
+            <a class="btn btn-rand" href="mailto:fischer@stuttgart-anwaltskanzlei.com" aria-label="E-Mail an Alexander Fischer"><svg class="ico"><use href="#i-mail"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="person">
+        <div class="portrait"><img src="img/seifert.jpg" alt="Rechtsanwältin Christina Seifert" width="683" height="776" loading="lazy"></div>
+        <div class="person-text">
+          <h3>Christina Seifert</h3>
+          <p class="rolle">Rechtsanwältin · Fachanwältin für Familienrecht</p>
+          <ul class="punkte"><li>Fachanwältin für Familienrecht</li><li>Scheidung, Unterhalt, Sorge- und Umgangsrecht</li><li>Eheverträge und Zugewinnausgleich</li></ul>
+          <div class="person-fuss">
+            <a class="btn btn-navy" href="#termin" data-anwalt="S">Termin buchen</a>
+            <a class="btn btn-rand" href="mailto:info@stuttgart-anwaltskanzlei.com" aria-label="E-Mail an Christina Seifert"><svg class="ico"><use href="#i-mail"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <article class="person">
+        <div class="portrait"><img src="img/gaiser.jpg" alt="Rechtsanwalt Tobias Gaiser" width="626" height="769" loading="lazy"></div>
+        <div class="person-text">
+          <h3>Tobias Gaiser</h3>
+          <p class="rolle">Rechtsanwalt · Fachanwalt für Miet- und WEG-Recht</p>
+          <ul class="punkte"><li>Fachanwalt für Miet- und Wohnungseigentumsrecht</li><li>Immobilien- und Maklerrecht</li><li>Arbeitsrecht und Verkehrsunfallrecht</li></ul>
+          <div class="person-fuss">
+            <a class="btn btn-navy" href="#termin" data-anwalt="G">Termin buchen</a>
+            <a class="btn btn-rand" href="mailto:info@stuttgart-anwaltskanzlei.com" aria-label="E-Mail an Tobias Gaiser"><svg class="ico"><use href="#i-mail"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Kanzlei -->
+<section id="kanzlei" class="warm" aria-labelledby="kanzlei-titel">
+  <div class="wrap vorteile">
+    <div>
+      <p class="label">Über die Kanzlei</p>
+      <h2 id="kanzlei-titel">Erfahren, <em>erreichbar</em>, persönlich.</h2>
+      <p class="einleitung">Seit über 20 Jahren stehen wir Mandanten in Stuttgart und bundesweit zur Seite. Bei uns sprechen Sie direkt mit Ihrem Anwalt, erhalten zeitnah Antwort und wissen jederzeit, wo Ihr Fall steht.</p>
+      <blockquote class="zitat">„Kanzlei: angenehmes Klima. Information: stets zeitnah und vor allem verständlich.“<cite>Google-Bewertung, San B.</cite></blockquote>
+      <div class="notfall-box">
+        <div><b>Notfall außerhalb der Öffnungszeiten?</b><p>In dringenden Fällen erreichen Sie uns hier.</p></div>
+        <a class="num" href="tel:+491753606034">0175 3606034</a>
+      </div>
+    </div>
+    <div class="vorteile-liste">
+      <div class="vorteil"><span class="ico-rund"><svg class="ico"><use href="#i-person"/></svg></span><div><h3>Ein fester Ansprechpartner</h3><p>Ihr Anwalt kennt Ihren Fall und ist direkt für Sie erreichbar.</p></div></div>
+      <div class="vorteil"><span class="ico-rund"><svg class="ico"><use href="#i-euro"/></svg></span><div><h3>Kostentransparent</h3><p>Sie wissen vorab, womit Sie rechnen können.</p></div></div>
+      <div class="vorteil"><span class="ico-rund"><svg class="ico"><use href="#i-kal"/></svg></span><div><h3>Kurzfristige Termine</h3><p>In der Kanzlei oder telefonisch, jetzt auch online buchbar.</p></div></div>
+      <div class="vorteil"><span class="ico-rund"><svg class="ico"><use href="#i-kind"/></svg></span><div><h3>Kinderbetreuung während der Beratung</h3><p>Nach Absprache kümmern wir uns um Ihre Kinder.</p></div></div>
+      <div class="vorteil"><span class="ico-rund"><svg class="ico"><use href="#i-auto"/></svg></span><div><h3>Parken in der Tiefgarage</h3><p>Bequem anreisen, mitten in Stuttgart-Vaihingen.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Bewertungen -->
+<section id="bewertungen" aria-labelledby="bewertungen-titel">
+  <div class="wrap">
+    <div class="kopfbereich zentriert">
+      <div>
+        <p class="label">Bewertungen</p>
+        <h2 id="bewertungen-titel">Das sagen <em>unsere Mandanten</em>.</h2>
+        <p class="einleitung">Verifizierte Bewertungen aus Google.</p>
+      </div>
+    </div>
+    <div class="bewertungen">
+      <figure class="bewertung gross">
+        <blockquote>„Hier ein herzliches Dankeschön für den guten Beistand. Es war hervorragende Arbeit und Sie waren auch in Notfällen erreichbar! Wir waren sehr zufrieden.“</blockquote>
+        <ul><li>Anwalt<b>super</b></li><li>Sekretariat<b>sehr nett</b></li><li>Erreichbar<b>eigentlich immer</b></li><li>Gebühr<b>absolut im Rahmen</b></li></ul>
+        <figcaption><span><b>San B.</b>Februar 2017</span><span class="quelle"><svg class="g-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 0 1-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.2 13.6a6 6 0 0 1 0-3.8V7.1H2.7a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.9.5 4 1.5l3-3A10 10 0 0 0 2.7 7.1l3.5 2.7C7 7.7 9.3 5.9 12 5.9z"/></svg>Google</span></figcaption>
+      </figure>
+      <figure class="bewertung">
+        <blockquote>„Super kompetent, hat immer Zeit, meldet sich bei einem Problem sofort. Ich bin sehr zufrieden.“</blockquote>
+        <figcaption><span><b>Tanja E.</b>2023</span><span class="quelle">Google</span></figcaption>
+      </figure>
+      <figure class="bewertung">
+        <blockquote>„Sehr kompetent, zuverlässig und freundlich. Kurzfristige Termine.“</blockquote>
+        <figcaption><span><b>Matthias F.</b>2019</span><span class="quelle">Google</span></figcaption>
+      </figure>
+    </div>
+    <div class="bew-fuss"><a class="link-pfeil" href="https://www.google.com/maps/search/?api=1&query=Anwaltskanzlei+Fischer+Seifert+Gaiser+Stuttgart" target="_blank" rel="noopener">Alle Bewertungen auf Google <svg class="ico"><use href="#i-pfeil"/></svg></a></div>
+  </div>
+</section>
+
+<!-- Termin buchen -->
+<section id="termin" class="warm" aria-labelledby="termin-titel">
+  <div class="wrap buchung">
+    <div>
+      <p class="label">Termin buchen</p>
+      <h2 id="termin-titel">Ihr Beratungstermin, <em>online gebucht.</em></h2>
+      <p class="einleitung">In drei Schritten zum Termin, in der Kanzlei oder telefonisch. Die Bestätigung kommt sofort per E-Mail.</p>
+      <ol class="schritte" id="schritt-liste">
+        <li class="aktiv"><span>1</span>Anliegen und Anwalt</li>
+        <li><span>2</span>Datum und Uhrzeit</li>
+        <li><span>3</span>Ihre Kontaktdaten</li>
+      </ol>
+      <p class="lieber">Lieber persönlich? <a class="num" href="tel:+4971178241814">0711 78241814</a></p>
+    </div>
+
+    <div class="kalender" id="kalender">
+      <div class="kal-kopf"><b id="kal-titel">Schritt 1 von 3</b><span><svg class="ico" style="vertical-align:-3px"><use href="#i-uhr"/></svg> ca. 2 Minuten</span></div>
+
+      <div class="schritt" data-s="1">
+        <h3>Worum geht es?</h3>
+        <div class="feld"><label for="b-anliegen" class="sr">Rechtsgebiet</label><select id="b-anliegen"></select></div>
+        <h3 style="margin-top:8px">Bei wem möchten Sie den Termin?</h3>
+        <fieldset class="wahl anwalt-wahl" id="b-anwalt">
+          <legend class="sr">Anwalt wählen</legend>
+          <label><input type="radio" name="anwalt" value="F"><span class="mini"><img src="img/fischer.jpg" alt=""></span><span><b>A. Fischer</b><small class="hinweis"></small></span></label>
+          <label><input type="radio" name="anwalt" value="S"><span class="mini"><img src="img/seifert.jpg" alt=""></span><span><b>C. Seifert</b><small class="hinweis"></small></span></label>
+          <label><input type="radio" name="anwalt" value="G"><span class="mini"><img src="img/gaiser.jpg" alt=""></span><span><b>T. Gaiser</b><small class="hinweis"></small></span></label>
+        </fieldset>
+        <div class="art">
+          <h3>Wie möchten Sie beraten werden?</h3>
+          <fieldset class="wahl">
+            <legend class="sr">Beratungsart</legend>
+            <label><input type="radio" name="art" value="In der Kanzlei" checked><b>In der Kanzlei</b><small>Hauptstraße 78 B, Vaihingen</small></label>
+            <label><input type="radio" name="art" value="Telefonisch"><b>Telefonisch</b><small>Wir rufen Sie an</small></label>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="schritt" data-s="2" hidden>
+        <h3>Wählen Sie einen Tag</h3>
+        <div class="tage" id="tage" role="group" aria-label="Tag"></div>
+        <h3>Freie Uhrzeiten</h3>
+        <div class="zeiten-raster" id="zeiten" role="group" aria-label="Uhrzeit"><p class="zeiten-leer">Bitte zuerst einen Tag wählen.</p></div>
+      </div>
+
+      <form class="schritt" data-s="3" id="b-form" novalidate hidden>
+        <div class="zusammen" id="zusammen"></div>
+        <div class="reihe">
+          <div class="feld"><label for="b-vn">Vorname</label><input id="b-vn" autocomplete="given-name" required><span class="fehler">Bitte Vornamen angeben.</span></div>
+          <div class="feld"><label for="b-nn">Nachname</label><input id="b-nn" autocomplete="family-name" required><span class="fehler">Bitte Nachnamen angeben.</span></div>
+        </div>
+        <div class="reihe">
+          <div class="feld"><label for="b-em">E-Mail</label><input id="b-em" type="email" autocomplete="email" required><span class="fehler">Bitte gültige E-Mail angeben, z. B. name@beispiel.de</span></div>
+          <div class="feld"><label for="b-tl">Telefon</label><input id="b-tl" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="feld"><label for="b-nr">Kurz zu Ihrem Anliegen (optional)</label><textarea id="b-nr" placeholder="Gibt es eine Frist, die bald abläuft?"></textarea></div>
+        <label class="check" id="b-ds-l"><input type="checkbox" id="b-ds"><span>Ich habe die <a href="https://www.stuttgart-anwaltskanzlei.com/SONSTIGES/DATENSCHUTZ/index.php/">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben einverstanden.</span></label>
+      </form>
+
+      <div class="bestaetigt" id="bestaetigt" hidden>
+        <div class="haken"><svg class="ico"><use href="#i-check"/></svg></div>
+        <h3>Ihr Termin ist gebucht</h3>
+        <p id="best-text">Wir haben Ihnen eine Bestätigung per E-Mail geschickt.</p>
+        <div class="zusammen" id="best-zusammen"></div>
+        <button class="btn btn-rand" type="button" id="b-neu">Weiteren Termin buchen</button>
+      </div>
+
+      <div class="kal-fuss" id="kal-fuss">
+        <button class="btn btn-rand" type="button" id="b-zurueck" hidden><svg class="ico"><use href="#i-zurueck"/></svg>Zurück</button>
+        <span></span>
+        <button class="btn btn-gold" type="button" id="b-weiter" disabled>Weiter <svg class="ico pf"><use href="#i-pfeil"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kontakt -->
+<section id="kontakt" aria-labelledby="kontakt-titel">
+  <div class="wrap">
+    <div class="kopfbereich"><div><p class="label">Kontakt</p><h2 id="kontakt-titel">Kontakt und <em>Anfahrt</em></h2></div></div>
+    <div class="kontakt">
+      <div>
+        <h3>Adresse</h3>
+        <address>Anwaltskanzlei Fischer Seifert Gaiser<br>Hauptstraße 78 B<br>70563 Stuttgart-Vaihingen</address>
+      </div>
+      <div>
+        <h3>Erreichbarkeit</h3>
+        <div class="zeilen">
+          <a class="num" href="tel:+4971178241814"><svg class="ico"><use href="#i-tel"/></svg>0711 78241814</a>
+          <a href="mailto:info@stuttgart-anwaltskanzlei.com"><svg class="ico"><use href="#i-mail"/></svg>info@stuttgart-anwaltskanzlei.com</a>
+          <span class="num" style="color:var(--text-2)"><svg class="ico"><use href="#i-dok"/></svg>Fax 0711 7824482</span>
+          <a class="num" href="tel:+491753606034"><svg class="ico"><use href="#i-blitz"/></svg>Notfall 0175 3606034</a>
+        </div>
+      </div>
+      <div>
+        <h3>Öffnungszeiten</h3>
+        <table class="oz num">
+          <tr data-t="1"><th scope="row">Montag</th><td>8:30–12:00 · 13:30–17:00</td></tr>
+          <tr data-t="2"><th scope="row">Dienstag</th><td>8:30–12:00 · 13:30–17:00</td></tr>
+          <tr data-t="3"><th scope="row">Mittwoch</th><td>8:30–12:00 · 13:30–17:00</td></tr>
+          <tr data-t="4"><th scope="row">Donnerstag</th><td>8:30–12:00 · 13:30–17:00</td></tr>
+          <tr data-t="5"><th scope="row">Freitag</th><td>8:30–12:00</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="karte">
+      <div class="karte-bild" role="img" aria-label="Kartenausschnitt Hauptstraße 78 B, Stuttgart-Vaihingen"></div>
+      <div class="karte-text">
+        <p>Hauptstraße 78 B<br>70563 Stuttgart-Vaihingen<br>Parken in der Tiefgarage</p>
+        <a class="btn btn-navy" href="https://www.google.com/maps/search/?api=1&query=Hauptstra%C3%9Fe+78B+70563+Stuttgart" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ort"/></svg>Route planen</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#"><b>Fischer Seifert Gaiser</b><small>Rechtsanwälte</small></a>
+      <p>Anwaltskanzlei in Stuttgart-Vaihingen. Persönlich in der Kanzlei, bundesweit vor Gericht.</p>
+    </div>
+    <nav aria-label="Rechtliches">
+      <a href="https://www.stuttgart-anwaltskanzlei.com/ANWALTSKANZLEI/KARRIERE/index.php/">Karriere</a>
+      <a href="https://www.stuttgart-anwaltskanzlei.com/FORMULARE/index.php/">Formulare</a>
+      <a href="#">Impressum</a>
+      <a href="https://www.stuttgart-anwaltskanzlei.com/SONSTIGES/DATENSCHUTZ/index.php/">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mobil-leiste">
+  <a class="btn btn-rand" href="tel:+4971178241814"><svg class="ico"><use href="#i-tel"/></svg>Anrufen</a>
+  <a class="btn btn-gold" href="#termin"><svg class="ico"><use href="#i-kal"/></svg>Termin buchen</a>
+</div>
+
+<div class="entwurf" aria-hidden="true">Entwurf von Velonify</div>
+
+<script>
+(() => {
+  const ANLIEGEN=[
+    ["Scheidung & Trennung","S"],["Unterhalt","S"],["Sorge- & Umgangsrecht","S"],["Ehevertrag","S"],
+    ["Erbrecht & Testament","F"],["Pflichtteil","F"],["Testamentsvollstreckung","F"],
+    ["Mietrecht","G"],["Wohnungseigentum (WEG)","G"],["Immobilien- & Maklerrecht","G"],["Verkehrsunfall","G"],
+    ["Arbeitsrecht & Kündigung","F"],["Vertragsprüfung","F"],["Gesellschaftsrecht","F"],["Markenrecht","F"],["Vereinsrecht","F"],
+    ["Inkasso & Mahnverfahren","F"],["Sonstiges","F"]
+  ];
+  const NAME={F:"Alexander Fischer",S:"Christina Seifert",G:"Tobias Gaiser"};
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const zustand={anliegen:"",anwalt:"",art:"In der Kanzlei",tag:null,zeit:"",schritt:1};
+  const haken='<svg class="ico" style="width:14px;height:14px;stroke-width:2.4"><use href="#i-check"/></svg>';
+
+  const opts='<option value="">Bitte wählen</option>'+ANLIEGEN.map(([t])=>`<option>${esc(t)}</option>`).join("");
+  const sA=document.getElementById("schnell-anliegen"), bA=document.getElementById("b-anliegen");
+  sA.innerHTML=opts; bA.innerHTML=opts;
+
+  const nav=document.getElementById("nav"), burger=document.getElementById("burger");
+  burger.addEventListener("click",()=>{const o=nav.classList.toggle("offen");burger.setAttribute("aria-expanded",o)});
+  document.querySelectorAll(".menue a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("offen");burger.setAttribute("aria-expanded","false")}));
+
+  const schritte=[...document.querySelectorAll(".schritt")];
+  const weiter=document.getElementById("b-weiter"), zurueck=document.getElementById("b-zurueck");
+  const liste=[...document.querySelectorAll("#schritt-liste li")];
+  const fmtTag=d=>new Intl.DateTimeFormat("de-DE",{weekday:"long",day:"numeric",month:"long"}).format(d);
+
+  function empfehle(){
+    const e=(ANLIEGEN.find(a=>a[0]===zustand.anliegen)||[])[1];
+    document.querySelectorAll("#b-anwalt label").forEach(l=>{
+      l.querySelector(".hinweis").innerHTML=l.querySelector("input").value===e?'<span class="empf">Empfohlen</span>':"";
+    });
+    if(e){zustand.anwalt=e;document.querySelector(`#b-anwalt input[value="${e}"]`).checked=true}
+  }
+  function pruefeWeiter(){
+    const n=zustand.schritt;
+    weiter.disabled=!(n===1?zustand.anliegen&&zustand.anwalt:n===2?zustand.tag&&zustand.zeit:true);
+  }
+  function zeige(n){
+    zustand.schritt=n;
+    schritte.forEach(s=>{const an=+s.dataset.s===n;s.hidden=!an;if(an){s.classList.remove("rein");void s.offsetWidth;s.classList.add("rein")}});
+    zurueck.hidden=n===1;
+    weiter.innerHTML=n===3?'Termin verbindlich buchen <svg class="ico"><use href="#i-check"/></svg>':'Weiter <svg class="ico pf"><use href="#i-pfeil"/></svg>';
+    document.getElementById("kal-titel").textContent=`Schritt ${n} von 3`;
+    liste.forEach((li,i)=>{li.classList.toggle("aktiv",i===n-1);li.classList.toggle("fertig",i<n-1);li.querySelector("span").innerHTML=i<n-1?haken:i+1});
+    if(n===2) baueTage();
+    if(n===3) document.getElementById("zusammen").innerHTML=zusammenfassung();
+    pruefeWeiter();
+  }
+  const zusammenfassung=()=>`<span><b>${esc(zustand.anliegen)}</b> bei ${esc(NAME[zustand.anwalt])}</span><span>${esc(fmtTag(zustand.tag))}, ${esc(zustand.zeit)} Uhr</span><span>${esc(zustand.art)}</span>`;
+
+  function waehleAnliegen(t){zustand.anliegen=t;bA.value=t;empfehle();pruefeWeiter()}
+  bA.addEventListener("change",()=>waehleAnliegen(bA.value));
+  document.getElementById("b-anwalt").addEventListener("change",e=>{zustand.anwalt=e.target.value;pruefeWeiter()});
+  document.querySelectorAll('input[name="art"]').forEach(r=>r.addEventListener("change",()=>zustand.art=r.value));
+
+  document.getElementById("schnell").addEventListener("submit",e=>{
+    e.preventDefault(); if(sA.value) waehleAnliegen(sA.value);
+    zeige(1); document.getElementById("termin").scrollIntoView({behavior:"smooth"});
+  });
+  document.querySelectorAll("[data-anwalt]").forEach(a=>a.addEventListener("click",()=>{
+    zustand.anwalt=a.dataset.anwalt; document.querySelector(`#b-anwalt input[value="${a.dataset.anwalt}"]`).checked=true; zeige(1);
+  }));
+  document.querySelectorAll("[data-anliegen]").forEach(a=>a.addEventListener("click",()=>{waehleAnliegen(a.dataset.anliegen);zeige(1)}));
+
+  function werktage(){
+    const r=[],d=new Date();d.setHours(0,0,0,0);
+    while(r.length<6){d.setDate(d.getDate()+1);const w=d.getDay();if(w>=1&&w<=5)r.push(new Date(d))}
+    return r;
+  }
+  function baueTage(){
+    document.getElementById("tage").innerHTML=werktage().map(d=>`<button type="button" class="tag" aria-pressed="${!!zustand.tag&&+zustand.tag===+d}" data-d="${+d}"><small>${new Intl.DateTimeFormat("de-DE",{weekday:"short"}).format(d)}</small><b class="num">${d.getDate()}.${d.getMonth()+1}.</b></button>`).join("");
+    if(zustand.tag) baueZeiten();
+  }
+  document.getElementById("tage").addEventListener("click",e=>{
+    const b=e.target.closest(".tag");if(!b)return;
+    zustand.tag=new Date(+b.dataset.d);zustand.zeit="";
+    document.querySelectorAll(".tag").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    baueZeiten();pruefeWeiter();
+  });
+  function baueZeiten(){
+    const fr=zustand.tag.getDay()===5;
+    const slots=fr?["8:30","9:30","10:30","11:15"]:["8:30","9:30","10:30","11:15","13:30","14:30","15:30","16:15"];
+    const seed=zustand.tag.getDate()+(zustand.anwalt||"F").charCodeAt(0);
+    document.getElementById("zeiten").innerHTML=slots.map((s,i)=>{
+      const belegt=((seed*7+i*13)%5)===0||((seed+i)%6)===0;
+      return `<button type="button" class="zeit num" ${belegt?`disabled aria-label="${s} Uhr, belegt"`:""} aria-pressed="${zustand.zeit===s}" data-z="${s}">${s}</button>`;
+    }).join("");
+  }
+  document.getElementById("zeiten").addEventListener("click",e=>{
+    const b=e.target.closest(".zeit:not([disabled])");if(!b)return;
+    zustand.zeit=b.dataset.z;document.querySelectorAll(".zeit").forEach(x=>x.setAttribute("aria-pressed",x===b));pruefeWeiter();
+  });
+
+  function feldOk(id,test){const el=document.getElementById(id),f=el.closest(".feld");const ok=test(el.value.trim());f.classList.toggle("falsch",!ok);el.setAttribute("aria-invalid",!ok);return ok}
+  weiter.addEventListener("click",()=>{
+    if(zustand.schritt<3) return zeige(zustand.schritt+1);
+    const ok=[feldOk("b-vn",v=>!!v),feldOk("b-nn",v=>!!v),feldOk("b-em",v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))];
+    const ds=document.getElementById("b-ds").checked;document.getElementById("b-ds-l").classList.toggle("falsch",!ds);
+    if(ok.includes(false)||!ds){(document.querySelector('#b-form [aria-invalid="true"]')||document.getElementById("b-ds")).focus();return}
+    schritte.forEach(s=>s.hidden=true);document.getElementById("kal-fuss").hidden=true;
+    document.getElementById("best-zusammen").innerHTML=zusammenfassung();
+    document.getElementById("best-text").textContent=`Danke, ${document.getElementById("b-vn").value.trim()}. Die Bestätigung geht an ${document.getElementById("b-em").value.trim()}.`;
+    document.getElementById("bestaetigt").hidden=false;
+    liste.forEach(li=>{li.classList.remove("aktiv");li.classList.add("fertig");li.querySelector("span").innerHTML=haken});
+    document.getElementById("kal-titel").textContent="Gebucht";
+  });
+  zurueck.addEventListener("click",()=>zeige(zustand.schritt-1));
+  document.getElementById("b-neu").addEventListener("click",()=>{
+    Object.assign(zustand,{anliegen:"",anwalt:"",tag:null,zeit:""});bA.value="";document.getElementById("b-form").reset();
+    document.querySelectorAll('#b-anwalt input').forEach(i=>i.checked=false);empfehle();
+    document.getElementById("bestaetigt").hidden=true;document.getElementById("kal-fuss").hidden=false;zeige(1);
+  });
+
+  function status(){
+    const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Berlin",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    const tag=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday),m=+p.hour*60+ +p.minute;
+    const vm=m>=510&&m<720,nm=m>=810&&m<1020;
+    const offen=(tag>=1&&tag<=4&&(vm||nm))||(tag===5&&vm);
+    const el=document.getElementById("status-top");
+    el.querySelector(".punkt").classList.toggle("zu",!offen);
+    el.querySelector("span").textContent=offen?`Jetzt geöffnet bis ${vm?"12:00":"17:00"} Uhr`:(tag>=1&&tag<=4&&m>=720&&m<810?"Mittagspause bis 13:30 Uhr":"Geschlossen · Termin online buchen");
+    document.querySelectorAll(".oz tr").forEach(r=>r.classList.toggle("heute",+r.dataset.t===tag));
+  }
+  status();setInterval(status,60000);
+  pruefeWeiter();
+})();
+</script>
+</body>
+</html>
